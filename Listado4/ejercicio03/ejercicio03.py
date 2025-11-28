@@ -7,3 +7,5 @@ o.close()
 c = open('Listado4/ejercicio03/copia.txt', 'w')
 
 c.write(line)
+
+c.close()
