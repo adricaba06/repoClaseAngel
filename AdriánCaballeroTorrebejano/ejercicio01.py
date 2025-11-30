@@ -3,28 +3,35 @@ print('Programa que te dice cyantos números anteriores eran menores que el sigu
 tam = 0
 numeros = []
 numero  = 0
+primerNumero = 0
 
 actual = 0
 siguiente = 0
 
-tam = int(input('Cuantos números va a introduccir'))
+def definirMenores(num,  lista_recibida):
+    numeros_mayores = []
+    
+    if(lista_recibida[0] > num):
+        numeros_mayores.append(lista_recibida[0])
+        
+        for i in range(1, len(lista_recibida)):
+            if lista_recibida[i] > lista_recibida[i-1]:
+                numeros_mayores.append(lista_recibida[1])
+                
+    return numeros_mayores
 
-for i in range(tam):
+
+
+
+primerNumero = int(input("Introduxca el primer número "))
+
+tam = int(input('Cuantos números va a introduccir '))
+
+for i in range(1, tam):
     numero = int(input(f'Introduzca el número {i}: '))
+    numeros.append(numero)
 
 
 
-
-def definirMenores(lista_recibida):
-    lista_recibida = []
-    
-    for i, numero in numeros:
-        actual = numero
-        siguiente = numeros[i]
-        if(actual < siguiente):
-            lista_recibida.append(actual)
-    
-    return lista_recibida
-
-print(definirMenores(numeros))
+print(definirMenores(primerNumero, numeros))
         
