@@ -1,4 +1,4 @@
-print('Programa que te dice cyantos números anteriores eran menores que el siguiente')
+print('Programa que te dice cuantos números anteriores eran menores que el siguiente')
 
 tam = 0
 numeros = []
@@ -22,10 +22,10 @@ def definirMenores(num,  lista_recibida):
 
 
 
-
 primerNumero = int(input("Introduxca el primer número "))
 
 tam = int(input('Cuantos números va a introduccir '))
+   
 
 for i in range(1, tam):
     numero = int(input(f'Introduzca el número {i}: '))
@@ -35,3 +35,5 @@ for i in range(1, tam):
 
 print(definirMenores(primerNumero, numeros))
         
+        
+    #-------------------------------

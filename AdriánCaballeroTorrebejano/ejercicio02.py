@@ -1,5 +1,5 @@
 
-tam = 3
+tam = 5
 lista = []
 numero = 0
 numeroMasGrande = 0
@@ -15,8 +15,15 @@ def ordenarPrimeroYUltimo(lista_numeros):
     
     lista_numeros.insert(0, valor_min)
     lista_numeros.append(valor_max)
+    
+    
+        
 
 #--------------------------------------------------
+
+
+
+
 
 
 for i in range(tam):
@@ -27,3 +34,5 @@ for i in range(tam):
 ordenarPrimeroYUltimo(lista)
 
 print(lista)
+
+#mi compañero ha ordenado la lista directamente
