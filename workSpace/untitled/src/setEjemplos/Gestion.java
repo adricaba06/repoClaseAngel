@@ -57,6 +57,23 @@ public class Gestion {
         }
     }
 
+    public double calcularRecaudado(){
+        return productos.stream().filter(p -> p.isComprado())
+                .mapToDouble(p -> p.getPrecio()).sum();
+    }
+
+    public boolean comprarProducto(int id){
+        Producto p = buscarProducto(id);
+
+        if(p != null){
+            p.setComprado(true);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     public void imprimirLista(){
         for(Producto p: productos){
             System.out.println(p);

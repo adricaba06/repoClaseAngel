@@ -7,12 +7,14 @@ public class Producto {
     private int id;
     private String nombre;
     private double precio;
+    private boolean comprado;
 
 
-    public Producto(int id, String nombre, double precio) {
+    public Producto(int id, String nombre, double precio, boolean comprado) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
+        this.comprado = comprado;
     }
 
     public int getId() {
@@ -46,7 +48,13 @@ public class Producto {
         return id == producto.id && Double.compare(precio, producto.precio) == 0 && Objects.equals(nombre, producto.nombre);
     }
 
+    public boolean isComprado() {
+        return comprado;
+    }
 
+    public void setComprado(boolean comprado) {
+        this.comprado = comprado;
+    }
 
     @Override
     public int hashCode() {

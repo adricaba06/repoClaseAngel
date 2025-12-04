@@ -10,9 +10,9 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
 
         Set<Producto> productosSet = new HashSet<>();
-        Producto p1 = new Producto(1, "katana mata alumnos", 100);
-        Producto p2 = new Producto(2, "Cuaderno", 6);
-        Producto p3 = new Producto(3, "Naranja", 0.7);
+        Producto p1 = new Producto(1, "katana mata alumnos", 100, true);
+        Producto p2 = new Producto(2, "Cuaderno", 6, false);
+        Producto p3 = new Producto(3, "Naranja", 0.7, false);
 
         productosSet.add(p1);
         productosSet.add(p2);
@@ -35,7 +35,10 @@ public class Principal {
             System.out.println("3. Editar precio por ID");
             System.out.println("4. Borrar producto por ID");
             System.out.println("5. Listar productos");
-            System.out.println("6. Salir");
+            System.out.println("6. Comprar producto");
+            System.out.println("7. Mostrar todos");
+            System.out.println("8. Calcular recaudado");
+            System.out.println("9. Salir");
             System.out.print("Elige una opción: ");
             opcion = sc.nextInt();
 
@@ -47,8 +50,11 @@ public class Principal {
 
                     System.out.print("Precio del producto: ");
                     precio = sc.nextDouble();
-
-                    gestion.agregarProducto(new Producto(contadorId, nombre, precio));
+                    while(precio <= 0){
+                        System.out.println("Invalido, introduzca el precio otra vez");
+                        precio = sc.nextDouble();
+                    }
+                    gestion.agregarProducto(new Producto(contadorId, nombre, precio, false));
 
                     System.out.println("Producto agregado.");
                     break;
@@ -99,12 +105,29 @@ public class Principal {
                     break;
 
                 case 6:
-                    repetir = false;
-                    System.out.println("Saliendo...");
+                    System.out.println("Indique el id del producto");
+                    id = sc.nextInt();
+
+                    if(gestion.comprarProducto(id)){
+                        gestion.comprarProducto(id);
+                        System.out.println("Producto comprado");
+                    }else{
+                        System.out.println("Producto no encontrado");
+                    }
                     break;
 
                 case 7:
                     gestion.imprimirLista();
+                    break;
+
+                case 8:
+                    System.out.println("Dinero recaudado:");
+                    System.out.println(gestion.calcularRecaudado());
+                    break;
+
+                case 9:
+                    repetir = false;
+                    System.out.println("Saliendo...");
                     break;
 
                 default:
