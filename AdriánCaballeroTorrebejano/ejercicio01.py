@@ -22,7 +22,7 @@ def definirMenores(num,  lista_recibida):
 
 
 
-primerNumero = int(input("Introduxca el primer número "))
+primerNumero = int(input("Introduzca el primer número "))
 
 tam = int(input('Cuantos números va a introduccir '))
    

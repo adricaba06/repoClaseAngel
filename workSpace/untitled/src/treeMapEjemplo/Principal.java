@@ -32,7 +32,7 @@ public class Principal {
         TemperatureService service = new TemperatureService(mapa);
 
 
-        System.out.println("Bienvenido al sistema de temperaturas");
+        System.out.println("Bienvenido al sistema de temperaturas por ciudad");
 
         while (repetir) {
 

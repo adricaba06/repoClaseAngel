@@ -72,11 +72,33 @@ public class Gestion {
     }
 
     public void listarTodos(){
-        for(Map.Entry<Alumno, Double> entry: listado.entrySet()){
+        for(Map.Entry<Alumno, Double> entry: listado.entrySet()){ //esta es la forma de hacer un for each con los mapas, tanto con hashMap como con treeMap
             System.out.println("Alumno: " + entry.getKey());
             System.out.println("Notas:" + entry.getValue());
             System.out.println("---------------------------");
         }
+    }
+
+    public double calcularNotaMedia(){
+        double media = 0;
+        double sumatorio = 0;
+        for(Map.Entry<Alumno, Double> entry: listado.entrySet()){
+            sumatorio += entry.getValue();
+            media = sumatorio / listado.size();
+        }
+
+        return media;
+    }
+
+    public Map<Alumno, Double> buscarAlumnosPorNotas(double nota){
+        Map<Alumno, Double> alumnosConNotas = new HashMap<>();
+
+        for (Map.Entry<Alumno, Double> entry: listado.entrySet()){
+            if (entry.getValue() == nota){
+                alumnosConNotas.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return alumnosConNotas;
     }
 
 

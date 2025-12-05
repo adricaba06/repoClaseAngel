@@ -28,6 +28,8 @@ public class Principal {
 
         boolean repetir = true;
 
+        System.out.println("Bienvenido a la app de gestion de productos");
+
         while (repetir) {
 
             System.out.println("1. Agregar producto");

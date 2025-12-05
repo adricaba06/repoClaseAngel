@@ -16,6 +16,7 @@ public class Principal {
         String email;
         int age;
         int maxInvitados = 5;
+        int limiteDeEdAD = 0;
 
         Scanner sc = new Scanner(System.in);
 
@@ -27,6 +28,8 @@ public class Principal {
         service.addGuest(new Guest(3, "Antonio", "antonio@email.com", 30));
         service.addGuest(new Guest(4, "Marta", "marta@email.com", 22));
 
+        System.out.println("Bienvenido al gestor de invitados de tu fiesta de cumple");
+
         while (repetir) {
 
             System.out.println("¿Qué desea hacer?");
@@ -36,7 +39,9 @@ public class Principal {
             System.out.println("4. Editar nombre de invitado por ID");
             System.out.println("5. Ver todos los invitados");
             System.out.println("6. Ver invitados ordenados alfabéticamente");
-            System.out.println("7. Salir");
+            System.out.println("7. Ver porcentaje de invitados que han asisitido");
+            System.out.println("8. Ver invitados mayores a una edad");
+            System.out.println("9. Salir");
 
             respuesta = sc.nextInt();
             sc.nextLine();
@@ -117,7 +122,31 @@ public class Principal {
                     break;
 
                 case 7:
+
+                    System.out.printf("Porcentaje de asistencia: %.2f ", service.getAttendancePercentage());
+                    break;
+
+                case 8:
+                    System.out.println("Introduzca el limite de edad minima ");
+                    limiteDeEdAD = sc.nextInt();
+
+                    while(limiteDeEdAD <=0){
+                        System.out.println("Limite invalido, introduzca de nuevo: ");
+                        limiteDeEdAD = sc.nextInt();
+                    }
+
+                    if(service.getGuestsAboveAge(limiteDeEdAD).isEmpty()){
+                        System.out.println("No hay invitados que cumplan esos requisitos de edad");
+                    }else{
+                        System.out.println(service.getGuestsAboveAge(limiteDeEdAD));
+                    }
+
+                    break;
+
+
+                case 9:
                     repetir = false;
+                    System.out.println("¡Gracias!");
                     break;
 
                 default:

@@ -14,6 +14,7 @@ public class Principal {
         double nota = 0;
         int contadorId = 3;
         int idABuscar;
+        double notaABuscar;
 
 
         Scanner sc = new Scanner(System.in);
@@ -42,7 +43,8 @@ public class Principal {
             System.out.println("4. Editar la nota de un alumno");
             System.out.println("5. Ver alumnos aprobados");
             System.out.println("6. Ver todos los alumnos");
-            System.out.println("6. Salir");
+            System.out.println("7. Calcular nota media");
+            System.out.println("8. Salir");
 
             respuesta = sc.nextInt();
 
@@ -112,9 +114,28 @@ public class Principal {
                     System.out.println(gestion.listarAlumnosAprobados());
                     break;
 
+
                 case 6:
                     gestion.listarTodos();
                     break;
+
+                case 7:
+                    System.out.printf("Nota media total: %.2f ", gestion.calcularNotaMedia());
+                    break;
+
+                case 8:
+                    System.out.println("Introduzca la nota");
+                    notaABuscar = sc.nextDouble();
+                    System.out.println(gestion.buscarAlumnosPorNotas(notaABuscar));
+
+
+                case 9:
+                    System.out.println("¡Gracias!");
+                    repetir = false;
+                    break;
+
+                default:
+                    System.out.println("Opción invalidad");
 
 
             }

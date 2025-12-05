@@ -3,6 +3,7 @@ package linkedHashSetEjemplo;
 import java.util.LinkedHashSet;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class EventService {
 
@@ -41,27 +42,27 @@ public class EventService {
     public boolean addGuest(Guest guest) {
         if (invitados.size() >= maxInvitados) {
             return false;
-        }else{
+        } else {
             invitados.add(guest);
             return true;
         }
     }
 
     public boolean removeGuest(Guest guest) {
-        if (findById(guest.getId()) != null){
+        if (findById(guest.getId()) != null) {
             invitados.remove(guest);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public boolean editGuestName(int id, String newName){
-        if (findById(id) != null){
+    public boolean editGuestName(int id, String newName) {
+        if (findById(id) != null) {
             Guest g = findById(id);
             g.setName(newName);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -75,32 +76,36 @@ public class EventService {
     }
 
     public double getAttendancePercentage() {
-        if (maxInvitados == 0) return 0;
+        if (maxInvitados == 0) {
+            return 0;
+        }
         return (invitados.size() * 100.0) / maxInvitados;
     }
 
-    public ArrayList<Guest> getGuestsAlphabetically() {
-        ArrayList<Guest> listaOrdenada = new ArrayList<>(invitados);
+    public List<Guest> getGuestsAlphabetically() {
+        List<Guest> listaOrdenada = new ArrayList<>(invitados);
         listaOrdenada.sort((g1, g2) -> g1.getName().compareToIgnoreCase(g2.getName()));
-        return listaOrdenada;
+        return listaOrdenada; //para practicar las lambdas
     }
 
     public LinkedHashSet<Guest> getAllGuests() {
         return new LinkedHashSet<>(invitados);
     }
 
-    public ArrayList<Guest> getGuestsAboveAge(int age) {
-        ArrayList<Guest> filtrados = new ArrayList<>();
+    public List<Guest> getGuestsAboveAge(int age) {
+        List<Guest> filtrados = new ArrayList<>();
         for (Guest g : invitados) {
             if (g.getAge() > age) filtrados.add(g);
         }
         return filtrados;
     }
 
-    public ArrayList<Guest> getGuestsBelowAge(int age) {
-        ArrayList<Guest> filtrados = new ArrayList<>();
+    public List<Guest> getGuestsByage(int age) {
+        List<Guest> filtrados = new ArrayList<>();
         for (Guest g : invitados) {
-            if (g.getAge() < age) filtrados.add(g);
+            if (g.getAge() <= age) {
+                filtrados.add(g);
+            }
         }
         return filtrados;
     }
